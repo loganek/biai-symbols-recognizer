@@ -1,4 +1,4 @@
-#include "image_loader.h"
+#include "image_operations/image_loader.h"
 #include <iostream>
 
 
@@ -7,7 +7,7 @@ int main()
   try
     {
       ImageLoader img;
-      img.Load("testimage.bmp");
+      img.Load("image_operations/testimage.bmp");
       const bool* buff = img.GetImageBuffer();
 
       for ( int i =0; i < img.GetSize().height; i++ )
