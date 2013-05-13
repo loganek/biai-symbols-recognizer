@@ -23,7 +23,7 @@ const bool* ImageLoader::GetImageBuffer()
   return imgBuffer;
 }
 
-const byte* ImageLoader::Load(const string& filename)
+void ImageLoader::Load(const string& filename)
 {
   this->filename = filename;
 

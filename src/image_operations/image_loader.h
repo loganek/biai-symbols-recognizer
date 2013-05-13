@@ -31,7 +31,7 @@ class ImageLoader
  public:
   ImageLoader();
   ~ImageLoader();
-  const byte* Load(const std::string& filename);
+  void Load(const std::string& filename);
   const Size& GetSize();
   const bool* GetImageBuffer();
 };
