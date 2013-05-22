@@ -1,0 +1,6 @@
+<AdaptiveVisionProject Name="cechy" Version="3.0.1006" StartUpProgramName="Main">
+  <Files>
+    <Program Path="cechy.avcode" />
+    <View Path="cechy.avview" />
+  </Files>
+</AdaptiveVisionProject>
