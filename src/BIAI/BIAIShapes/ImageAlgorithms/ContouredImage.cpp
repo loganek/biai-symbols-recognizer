@@ -33,3 +33,10 @@ Circle ContouredImage::GetBoundingCircle()
 
 	return Circle(radius, center);
 }
+
+Box ContouredImage::GetBoundingBox()
+{
+	cv::Rect rect = cv::boundingRect(contour);
+
+	return Box(rect.size());
+}

@@ -24,5 +24,7 @@ double ImageFeatures::Elongation()
 
 double ImageFeatures::Rectangularity()
 {
-	return 0.0f;
+	Box boundingBox = image.GetBoundingBox();
+
+	return image.GetArea() / boundingBox.GetArea();
 }
