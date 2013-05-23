@@ -1,6 +1,7 @@
 #ifndef CONTOURED_IMAGE_H
 #define CONTOURED_IMAGE_H
 
+#include "Circle.h"
 #include <vector>
 #include <opencv2/core/core.hpp>
 
@@ -13,7 +14,7 @@ public:
 
 	std::vector<cv::Point> GetContour();
 	float GetArea();
-	float GetRadiusOfBoundingCircle();
+	Circle GetBoundingCircle();
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "ImageFeatures.h"
+#include <cmath>
 
 ImageFeatures::ImageFeatures(ContouredImage image)
 	: image(image)
@@ -6,8 +7,9 @@ ImageFeatures::ImageFeatures(ContouredImage image)
 
 double ImageFeatures::Circularity()
 {
-	image.GetArea();
-	return 0.0f;
+	Circle boundingCircle = image.GetBoundingCircle();
+
+	return std::max(image.GetArea() / boundingCircle.GetArea(), 1.0f);
 }
 
 double ImageFeatures::Convexity()

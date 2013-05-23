@@ -1,7 +1,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#define _USE_MATH_DEFINES 
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <opencv2/core/core.hpp>
 
@@ -28,8 +28,8 @@ public:
 
 	float GetArea()
 	{
-		return std::pow(radius, 2.0f) * M_PI
-	};
+		return std::pow(radius, 2.0f) * float(M_PI);
+	}
 };
 
 #endif

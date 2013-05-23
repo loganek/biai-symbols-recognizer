@@ -22,14 +22,14 @@ vector<cv::Point> ContouredImage::GetContour()
 
 float ContouredImage::GetArea()
 {
-	return (float)cv::contourArea(contour);
+	return float(cv::contourArea(contour));
 }
 
-float ContouredImage::GetRadiusOfBoundingCircle()
+Circle ContouredImage::GetBoundingCircle()
 {
 	cv::Point2f center;
 	float radius;
 	cv::minEnclosingCircle(contour, center, radius);
 
-	return radius;
+	return Circle(radius, center);
 }
