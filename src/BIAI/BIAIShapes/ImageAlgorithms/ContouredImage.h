@@ -12,11 +12,13 @@ private:
 	std::vector<cv::Point> contour;
 public:
 	ContouredImage(cv::Mat image);
+	ContouredImage(std::vector<cv::Point> contour);
 
 	std::vector<cv::Point> GetContour();
 	float GetArea();
 	Circle GetBoundingCircle();
 	Box GetBoundingBox();
+	ContouredImage GetConvexHull();
 };
 
 #endif

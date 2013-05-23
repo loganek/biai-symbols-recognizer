@@ -15,6 +15,10 @@ ContouredImage::ContouredImage(cv::Mat image)
 		contour = ctrs[0];
 }
 
+ContouredImage::ContouredImage(vector<cv::Point> contour)
+	: contour(contour)
+{}
+
 vector<cv::Point> ContouredImage::GetContour()
 {
 	return contour;
@@ -39,4 +43,12 @@ Box ContouredImage::GetBoundingBox()
 	cv::Rect rect = cv::boundingRect(contour);
 
 	return Box(rect.size());
+}
+
+ContouredImage ContouredImage::GetConvexHull()
+{
+	vector<cv::Point> convHull;
+	cv::convexHull(contour, convHull);
+
+	return ContouredImage(contour);
 }

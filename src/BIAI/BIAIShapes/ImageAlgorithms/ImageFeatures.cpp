@@ -9,17 +9,14 @@ double ImageFeatures::Circularity()
 {
 	Circle boundingCircle = image.GetBoundingCircle();
 
-	return std::max(image.GetArea() / boundingCircle.GetArea(), 1.0f);
+	return std::min(image.GetArea() / boundingCircle.GetArea(), 1.0f);
 }
 
 double ImageFeatures::Convexity()
 {
-	return 0.0f;
-}
+	ContouredImage contoured = image.GetConvexHull();
 
-double ImageFeatures::Elongation()
-{
-	return 0.0f;
+	return std::min(image.GetArea() / contoured.GetArea(), 1.0f);
 }
 
 double ImageFeatures::Rectangularity()

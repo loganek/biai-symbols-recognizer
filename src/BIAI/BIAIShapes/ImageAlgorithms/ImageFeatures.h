@@ -13,7 +13,6 @@ public:
 
 	double Circularity();
 	double Convexity();
-	double Elongation();
 	double Rectangularity();
 };
 
