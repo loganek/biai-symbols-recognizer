@@ -1,11 +1,12 @@
 #include "ImageFeatures.h"
 
-ImageFeatures::ImageFeatures(cv::Mat image)
+ImageFeatures::ImageFeatures(ContouredImage image)
 	: image(image)
 {}
 
 double ImageFeatures::Circularity()
 {
+	image.GetArea();
 	return 0.0f;
 }
 

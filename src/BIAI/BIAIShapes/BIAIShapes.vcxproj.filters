@@ -33,6 +33,12 @@
     <ClInclude Include="ImageAlgorithms\ImageFeatures.h">
       <Filter>Header Files\ImageAlgorithms</Filter>
     </ClInclude>
+    <ClInclude Include="ImageAlgorithms\ContouredImage.h">
+      <Filter>Header Files\ImageAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageAlgorithms\Circle.h">
+      <Filter>Header Files\ImageAlgorithms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ImageAlgorithms\ImageFeatures.cpp">
+      <Filter>Source Files\ImageAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageAlgorithms\ContouredImage.cpp">
       <Filter>Source Files\ImageAlgorithms</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,14 +1,14 @@
 #ifndef IMAGE_FEATURES_H
 #define IMAGE_FEATURES_H
 
-#include <opencv2/core/core.hpp>
+#include "ContouredImage.h"
 
 class ImageFeatures
 {
 private:
-	cv::Mat image;
+	ContouredImage image;
 public:
-	ImageFeatures(cv::Mat image);
+	ImageFeatures(ContouredImage image);
 	virtual ~ImageFeatures() {}
 
 	double Circularity();
