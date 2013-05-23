@@ -78,6 +78,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ImageAlgorithms\Box.h" />
     <ClInclude Include="ImageAlgorithms\Circle.h" />
     <ClInclude Include="ImageAlgorithms\ContouredImage.h" />
     <ClInclude Include="ImageAlgorithms\ImageFeatures.h" />
