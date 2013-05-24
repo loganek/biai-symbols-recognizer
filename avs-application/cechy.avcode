@@ -88,3 +88,49 @@ public Cechy(Region inRegion, Real outCircularity, Real outConvexity, Real outEl
 	outRectangularity = con_1a458ac6_2805_43aa_aa45_d103609fab5b
 }
 
+public TestDataGenerator()
+{
+	Cechy
+	(
+		inRegion: Region<cechy.64cc9ca6.Region.avdata>
+		outCircularity: con_86b5e2e9_293e_4d23_b4ba_5aa309f83463
+		outConvexity: con_8eba5f5a_0691_4d7f_97f3_c8ca22721b98
+		outElongation: Nil
+		outRectangularity: con_f42a0ebd_c928_4691_a6be_873dcc2c252e
+	)
+
+	AddIntegers
+	(
+		inA: 3
+		inB: 0
+		outSum: con_e28ccc64_a6f9_44dd_b6b8_1d9cc1159ab2
+	)
+
+	CreateShortArray<String>
+	(
+		inValue1: con_86b5e2e9_293e_4d23_b4ba_5aa309f83463
+		inValue2: con_f42a0ebd_c928_4691_a6be_873dcc2c252e
+		inValue3: con_8eba5f5a_0691_4d7f_97f3_c8ca22721b98
+		inValue4: con_e28ccc64_a6f9_44dd_b6b8_1d9cc1159ab2
+		inValue5: Nil
+		inValue6: Nil
+		inValue7: Nil
+		inValue8: Nil
+		outArray: con_46003e2f_12cb_46e9_af79_0fa26fcd7e9c
+	)
+
+	FormatString
+	(
+		inFormat: "%0% %1% %2% %3%\\r\\n"
+		inData: con_46003e2f_12cb_46e9_af79_0fa26fcd7e9c
+		outFormattedString: con_0e12d2fa_ab2a_4b06_8481_36e50dabd708
+	)
+
+	SaveString
+	(
+		inString: con_0e12d2fa_ab2a_4b06_8481_36e50dabd708
+		inFileAccessMode: CreateOrAppend
+		inFile: "E:\\test.txt"
+	)
+}
+
