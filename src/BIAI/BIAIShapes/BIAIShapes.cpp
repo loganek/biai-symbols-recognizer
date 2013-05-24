@@ -11,7 +11,7 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	ContouredImage image("E:\\kwadrat.png");
+	ContouredImage image("E:\\krzyz.png");
 	ImageFeatures features(image);
 	cout << features.Circularity() << endl;
 	cout << features.Convexity() << endl;

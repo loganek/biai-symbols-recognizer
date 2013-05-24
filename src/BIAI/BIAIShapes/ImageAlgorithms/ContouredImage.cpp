@@ -55,5 +55,5 @@ ContouredImage ContouredImage::GetConvexHull()
 	vector<cv::Point> convHull;
 	cv::convexHull(contour, convHull);
 
-	return ContouredImage(contour);
+	return ContouredImage(convHull);
 }
