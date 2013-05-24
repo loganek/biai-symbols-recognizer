@@ -82,11 +82,14 @@
     <ClInclude Include="ImageAlgorithms\Circle.h" />
     <ClInclude Include="ImageAlgorithms\ContouredImage.h" />
     <ClInclude Include="ImageAlgorithms\ImageFeatures.h" />
+    <ClInclude Include="Training\TrainingData.h" />
+    <ClInclude Include="Training\TrainingDataLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BIAIShapes.cpp" />
     <ClCompile Include="ImageAlgorithms\ContouredImage.cpp" />
     <ClCompile Include="ImageAlgorithms\ImageFeatures.cpp" />
+    <ClCompile Include="Training\TrainingData.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

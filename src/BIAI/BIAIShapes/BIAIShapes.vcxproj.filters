@@ -19,6 +19,12 @@
     <Filter Include="Source Files\ImageAlgorithms">
       <UniqueIdentifier>{4ffdc538-5166-43ac-9ea8-7f26abff2797}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Training">
+      <UniqueIdentifier>{a39b95b0-8046-4786-a02a-b627ed66fd45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Training">
+      <UniqueIdentifier>{88d500af-03fc-4a4e-b9f0-d96fb26d37af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -36,6 +42,12 @@
     <ClInclude Include="ImageAlgorithms\Box.h">
       <Filter>Header Files\ImageAlgorithms</Filter>
     </ClInclude>
+    <ClInclude Include="Training\TrainingDataLoader.h">
+      <Filter>Header Files\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="Training\TrainingData.h">
+      <Filter>Header Files\Training</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BIAIShapes.cpp">
@@ -46,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="ImageAlgorithms\ContouredImage.cpp">
       <Filter>Source Files\ImageAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="Training\TrainingData.cpp">
+      <Filter>Source Files\Training</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
