@@ -1,7 +1,7 @@
 #include "ImageFeatures.h"
 #include <cmath>
 
-ImageFeatures::ImageFeatures(ContouredImage image)
+ImageFeatures::ImageFeatures(const ContouredImage& image)
 	: image(image)
 {}
 

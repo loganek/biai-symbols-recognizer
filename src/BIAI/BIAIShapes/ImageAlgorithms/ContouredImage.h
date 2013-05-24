@@ -11,8 +11,8 @@ class ContouredImage
 private:
 	std::vector<cv::Point> contour;
 public:
-	ContouredImage(cv::Mat image);
-	ContouredImage(std::vector<cv::Point> contour);
+	ContouredImage(const std::string& fileName);
+	ContouredImage(const std::vector<cv::Point>& contour);
 
 	std::vector<cv::Point> GetContour();
 	float GetArea();

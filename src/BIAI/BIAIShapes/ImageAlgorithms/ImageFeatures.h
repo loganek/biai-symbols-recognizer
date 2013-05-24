@@ -8,7 +8,7 @@ class ImageFeatures
 private:
 	ContouredImage image;
 public:
-	ImageFeatures(ContouredImage image);
+	ImageFeatures(const ContouredImage& image);
 	virtual ~ImageFeatures() {}
 
 	double Circularity();

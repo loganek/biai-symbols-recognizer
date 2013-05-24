@@ -1,10 +1,15 @@
 #include "ContouredImage.h"
 #include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 using namespace std;
 
-ContouredImage::ContouredImage(cv::Mat image)
+ContouredImage::ContouredImage(const std::string& fileName)
 {
+	cv::Mat image = cv::imread(fileName);
+	cv::Mat gray;
+	cvtColor(image, gray, CV_BGR2GRAY);
+	cv::blur(gray, gray, cv::Size(3,3));
 	cv::Mat canny_output;
 	vector<vector<cv::Point> > ctrs;
 	vector<cv::Vec4i> hierarchy;
@@ -15,7 +20,7 @@ ContouredImage::ContouredImage(cv::Mat image)
 		contour = ctrs[0];
 }
 
-ContouredImage::ContouredImage(vector<cv::Point> contour)
+ContouredImage::ContouredImage(const vector<cv::Point>& contour)
 	: contour(contour)
 {}
 
