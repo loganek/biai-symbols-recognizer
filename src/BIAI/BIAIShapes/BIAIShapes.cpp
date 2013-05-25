@@ -43,8 +43,13 @@ void DisplayTrainingData(const vector<TrainingData>& v)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	const int shapes = 4;
-	NeuralNetwork net(3, 5, shapes);
+	const int shapes = 3;
+
+	vector<int> hiddenLayers;
+	hiddenLayers.push_back(4);
+	hiddenLayers.push_back(5);
+
+	NeuralNetwork net(3, hiddenLayers, shapes);
 	NeuronTranslator<shapes> translator;
 
 	ContouredImage image("E:\\krzyz.png");
@@ -66,10 +71,17 @@ int _tmain(int argc, _TCHAR* argv[])
 		net.FeedForward(v);
 		translator.Init(net.GetResults());
 		vector<double> aa = translator.GetOriginalData();
-		//cout << it->GetCircularity() << " " << it->GetConvexity() << " " << it->GetRectangularity() << " " << aa[0] << " " << aa[1] << " " << aa[2] << endl;
+		cout << it->GetCircularity() << " " << it->GetConvexity() << " " << it->GetRectangularity() << " " << aa[0] << " " << aa[1] << " " << aa[2] << endl;
 
 		net.BackPropagation(NeuronTranslator<shapes>::GenerateIndexedData(it->GetShapeType()));
 	}
+
+	std::vector<double> vv;
+		vv.push_back(features.Circularity()); vv.push_back(features.Convexity()); vv.push_back(features.Rectangularity());
+		net.FeedForward(vv);
+		translator.Init(net.GetResults());
+		vector<double> aa = translator.GetOriginalData();
+		
 	return 0;
 }
 

@@ -13,24 +13,32 @@ double ActivationFunctionDerivative(double x)
     return 1.0 - x * x;
 }
 
-NeuralNetwork::NeuralNetwork(int inpNeuron, int hidNeuron, int outNeuron)
+NeuralNetwork::NeuralNetwork(int inpNeuron, vector<int> hidLayers, int outNeuron)
 {
-	inputLayer = new Layer(inpNeuron, hidNeuron + 1);
+	inputLayer = hidLayers.size() == 0 ? new Layer(inpNeuron, outNeuron + 1) : inputLayer = new Layer(inpNeuron, hidLayers[0] + 1);
 	
-	hiddenLayer = new HiddenLayer(hidNeuron, inputLayer, 4 + 1);
-	hiddenLayer->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
-	
-	hiddenLayer2 = new HiddenLayer(5, hiddenLayer, outNeuron + 1);
-	hiddenLayer2->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
-	
-	outputLayer = new OutputLayer(outNeuron, hiddenLayer2);
+	Layer* prevLayer = inputLayer;
+
+	hiddenLayers.reserve(hidLayers.size());
+	hidLayers.push_back(outNeuron);
+
+	for ( auto it = hidLayers.begin(); it != hidLayers.end() - 1; it++ )
+	{
+		hiddenLayers.push_back(new HiddenLayer(*it, prevLayer, *(it + 1) + 1));
+		prevLayer = hiddenLayers.back();
+		((HiddenLayer*)prevLayer)->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
+	}
+
+
+	outputLayer = new OutputLayer(outNeuron, prevLayer);
 	outputLayer->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
 }
 
 NeuralNetwork::~NeuralNetwork()
 {
 	delete outputLayer;
-	delete hiddenLayer;
+	
+
 	delete inputLayer;
 }
 
@@ -42,19 +50,28 @@ vector<double> NeuralNetwork::GetResults() const
 void NeuralNetwork::BackPropagation(const vector<double>& expected)
 {
     outputLayer->CalculateGradients(expected);
-	hiddenLayer2->CalculateGradients(outputLayer);
-	hiddenLayer->CalculateGradients(hiddenLayer2);
-    
+
+	Layer* nextLayer = outputLayer;
+
+	for ( auto rit = hiddenLayers.rbegin(); rit != hiddenLayers.rend(); rit++ )
+	{
+		(*(rit))->CalculateGradients(nextLayer);
+		nextLayer = (*(rit));
+	}
+
 	outputLayer->UpdateInputWeights();
-	hiddenLayer2->UpdateInputWeights();
-	hiddenLayer->UpdateInputWeights();
+	
+	for ( auto rit = hiddenLayers.rbegin(); rit != hiddenLayers.rend(); rit++ )
+		(*(rit))->UpdateInputWeights();
 }
 
 void NeuralNetwork::FeedForward(const vector<double>& inputs)
 {
 	inputLayer->LoadInputs(inputs);
-	hiddenLayer->FeedForward();
-	hiddenLayer2->FeedForward();
+
+	for ( auto it = hiddenLayers.begin(); it != hiddenLayers.end(); it++ )
+		(*(it))->FeedForward();
+
 	outputLayer->FeedForward();
 }
 

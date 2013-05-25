@@ -9,12 +9,11 @@ class NeuralNetwork
 {
 private:
     Layer* inputLayer;
-	HiddenLayer* hiddenLayer;
-	HiddenLayer* hiddenLayer2;
+	std::vector<HiddenLayer*> hiddenLayers;
 	OutputLayer* outputLayer;
 
 public:
-    NeuralNetwork(int inpNeuron, int hidNeuron, int outNeuron);
+    NeuralNetwork(int inpNeuron, std::vector<int> hidLayers, int outNeuron);
 	virtual ~NeuralNetwork();
 
     void FeedForward(const std::vector<double> &inputVals);
