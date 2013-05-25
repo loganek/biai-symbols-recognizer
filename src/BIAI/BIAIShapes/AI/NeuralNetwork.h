@@ -10,6 +10,7 @@ class NeuralNetwork
 private:
     Layer* inputLayer;
 	HiddenLayer* hiddenLayer;
+	HiddenLayer* hiddenLayer2;
 	OutputLayer* outputLayer;
 
 public:

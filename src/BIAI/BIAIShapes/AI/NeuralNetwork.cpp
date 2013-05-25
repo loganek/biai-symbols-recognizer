@@ -16,9 +16,14 @@ double ActivationFunctionDerivative(double x)
 NeuralNetwork::NeuralNetwork(int inpNeuron, int hidNeuron, int outNeuron)
 {
 	inputLayer = new Layer(inpNeuron, hidNeuron + 1);
-	hiddenLayer = new HiddenLayer(hidNeuron, inputLayer, outNeuron + 1);
+	
+	hiddenLayer = new HiddenLayer(hidNeuron, inputLayer, 4 + 1);
 	hiddenLayer->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
-	outputLayer = new OutputLayer(outNeuron, hiddenLayer);
+	
+	hiddenLayer2 = new HiddenLayer(5, hiddenLayer, outNeuron + 1);
+	hiddenLayer2->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
+	
+	outputLayer = new OutputLayer(outNeuron, hiddenLayer2);
 	outputLayer->SetActivationFunctions(ActivationFunction, ActivationFunctionDerivative);
 }
 
@@ -37,9 +42,11 @@ vector<double> NeuralNetwork::GetResults() const
 void NeuralNetwork::BackPropagation(const vector<double>& expected)
 {
     outputLayer->CalculateGradients(expected);
-	hiddenLayer->CalculateGradients(outputLayer);
+	hiddenLayer2->CalculateGradients(outputLayer);
+	hiddenLayer->CalculateGradients(hiddenLayer2);
     
 	outputLayer->UpdateInputWeights();
+	hiddenLayer2->UpdateInputWeights();
 	hiddenLayer->UpdateInputWeights();
 }
 
@@ -47,6 +54,7 @@ void NeuralNetwork::FeedForward(const vector<double>& inputs)
 {
 	inputLayer->LoadInputs(inputs);
 	hiddenLayer->FeedForward();
+	hiddenLayer2->FeedForward();
 	outputLayer->FeedForward();
 }
 

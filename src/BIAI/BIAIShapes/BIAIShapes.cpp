@@ -30,61 +30,46 @@ const char* ShapeToStr(ShapeNo::Type shape)
 	}
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+void DisplayTrainingData(const vector<TrainingData>& v)
 {
-	/*ContouredImage image("E:\\krzyz.png");
-	ImageFeatures features(image);
-	cout << features.Circularity() << endl;
-	cout << features.Convexity() << endl;
-	cout << features.Rectangularity() << endl;
- 
-	TrainingDataLoader<TrainingData> loader("E:\\test.txt");
-	loader.LoadData();
-	vector<TrainingData> v = loader.GetData();
-
 	cout << "Circularity:\tConvexity:\tRectangularity:\tShape:" << endl;
 
 	for ( auto it = v.begin(); it != v.end(); it++ )
 	{
 		cout << it->GetCircularity() << "\t\t" << it->GetConvexity() << "\t\t" << it->GetRectangularity() << "\t\t" << ShapeToStr(it->GetShapeType()) << endl;
 	}
-	*/
+}
 
 
-	NeuralNetwork net(2, 4, 4);
-	srand( time(NULL) ); 
-	NeuronTranslator<4> translator;
-	int cnt = 0;
-	for ( int i = 0; i < 500; i++ )
+int _tmain(int argc, _TCHAR* argv[])
+{
+	const int shapes = 4;
+	NeuralNetwork net(3, 5, shapes);
+	NeuronTranslator<shapes> translator;
+
+	ContouredImage image("E:\\krzyz.png");
+	ImageFeatures features(image);
+	cout << features.Circularity() << endl;
+	cout << features.Convexity() << endl;
+	cout << features.Rectangularity() << endl;
+ 
+	TrainingDataLoader<TrainingData> loader("D:\\Moj_folder\\Dokumenty\\uczelnia\\BIAI\\biai-projekt\\test.txt");
+	loader.LoadData();
+	vector<TrainingData> v = loader.GetData();
+
+	DisplayTrainingData(v);
+	for ( int i = 0; i < 200; i++ )
+	for ( auto it = v.begin(); it != v.end(); it++ )
 	{
-		int a = rand() % 2; 
-		int b = rand() % 2;
-		int c = rand() % 4;
-		//cout << b << " " << a;
-		cout << c;
-		vector<double> xx;
-		xx.push_back(a);
-		xx.push_back(b);
-        
- 		//net.FeedForward(xx);
-		net.FeedForward(NeuronTranslator<2>::GenerateNetworkData(c));
-		vector<double> res = net.GetResults();
-		translator.Init(res);
-		cout << " " << translator.GetSetIndex() << endl;
-		if ( translator.GetSetIndex() == c )
-			cnt++;
+		std::vector<double> v;
+		v.push_back(it->GetCircularity()); v.push_back(it->GetConvexity()); v.push_back(it->GetRectangularity());
+		net.FeedForward(v);
+		translator.Init(net.GetResults());
+		vector<double> aa = translator.GetOriginalData();
+		//cout << it->GetCircularity() << " " << it->GetConvexity() << " " << it->GetRectangularity() << " " << aa[0] << " " << aa[1] << " " << aa[2] << endl;
 
-        //cout << " " << res[0] <<  " " << res[1]<<  " " << res[2]<<  " " << res[3] << endl;
-		vector<double> expected;
-		/*expected.push_back( !a && !b);
-		expected.push_back(a && !b);
-		expected.push_back(!a && b);
-		expected.push_back(a && b);*/
-		
-		net.BackPropagation(NeuronTranslator<4>::GenerateIndexedData(c));
-
+		net.BackPropagation(NeuronTranslator<shapes>::GenerateIndexedData(it->GetShapeType()));
 	}
-
 	return 0;
 }
 
