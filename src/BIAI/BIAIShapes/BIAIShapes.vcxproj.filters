@@ -25,9 +25,18 @@
     <Filter Include="Source Files\Training">
       <UniqueIdentifier>{88d500af-03fc-4a4e-b9f0-d96fb26d37af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\AI">
+      <UniqueIdentifier>{853af0ab-ae7b-49fb-a91b-43946573d0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI">
+      <UniqueIdentifier>{88c91fe1-27a0-4955-8ff0-1b017f436357}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+    <None Include="AI\Layer.h">
+      <Filter>Header Files\AI</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageAlgorithms\ImageFeatures.h">
@@ -48,6 +57,21 @@
     <ClInclude Include="Training\TrainingData.h">
       <Filter>Header Files\Training</Filter>
     </ClInclude>
+    <ClInclude Include="AI\Neuron.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\NeuralNetwork.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\FurtherLayer.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\OutputLayer.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\HiddenLayer.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BIAIShapes.cpp">
@@ -61,6 +85,24 @@
     </ClCompile>
     <ClCompile Include="Training\TrainingData.cpp">
       <Filter>Source Files\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Neuron.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Layer.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\NeuralNetwork.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\FurtherLayer.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\OutputLayer.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\HiddenLayer.cpp">
+      <Filter>Source Files\AI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
