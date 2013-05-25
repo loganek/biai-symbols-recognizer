@@ -37,7 +37,9 @@ public:
 	void SetGradient(double value) { gradient = value; }
 
 	double GetWeight(int index) const { return weights[index].weight; }
-
+	void SetWeight(int index, double value) { weights[index].weight = value; }
+	int GetWeightCount() const { return weights.size(); }
+	
 	unsigned GetIndex() const { return index; }
 	
 	void UpdateWeight(const Neuron& targetNeuron);

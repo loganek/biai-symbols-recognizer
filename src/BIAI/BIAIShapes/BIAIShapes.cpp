@@ -49,7 +49,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	hiddenLayers.push_back(4);
 	hiddenLayers.push_back(5);
 
-	NeuralNetwork net(3, hiddenLayers, shapes);
+	TopologyInfo info;
+	info.inputCount = 3;
+	info.outputCount = shapes;
+	info.hiddenCount = hiddenLayers;
+
+	NeuralNetwork net(info);
 	NeuronTranslator<shapes> translator;
 
 	ContouredImage image("E:\\krzyz.png");
@@ -63,7 +68,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	vector<TrainingData> v = loader.GetData();
 
 	DisplayTrainingData(v);
-	for ( int i = 0; i < 200; i++ )
+	for ( int i = 0; i < 150; i++ )
 	for ( auto it = v.begin(); it != v.end(); it++ )
 	{
 		std::vector<double> v;
@@ -75,11 +80,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		net.BackPropagation(NeuronTranslator<shapes>::GenerateIndexedData(it->GetShapeType()));
 	}
-
 	std::vector<double> vv;
 		vv.push_back(features.Circularity()); vv.push_back(features.Convexity()); vv.push_back(features.Rectangularity());
 		net.FeedForward(vv);
-		translator.Init(net.GetResults());
+		vector<double> xx = net.GetResults();
+	net.SaveNetwork("E:\\topology.txt");
+	NeuralNetwork* netLoaded = NeuralNetwork::LoadNetwork("E:\\topology.txt");
+	
+		netLoaded->FeedForward(vv);
+		translator.Init(netLoaded->GetResults());
 		vector<double> aa = translator.GetOriginalData();
 		
 	return 0;

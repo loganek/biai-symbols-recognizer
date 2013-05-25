@@ -9,7 +9,6 @@ Neuron::Neuron(unsigned outputCount, unsigned index)
 {
 	weightsInitializer = [] { return rand() / double(RAND_MAX); };
 
-
     for ( unsigned i = 0; i < outputCount; i++ )
 		weights.push_back(Connection(weightsInitializer()));
 }

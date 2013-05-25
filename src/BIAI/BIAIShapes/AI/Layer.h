@@ -20,6 +20,7 @@ public:
 	NeuronVect::const_iterator end() const { return neurons.end(); }
 
 	std::vector<double> GetValues() const;
+	int NeuronCount() const { return neurons.size(); }
 	void LoadInputs(const std::vector<double>& inputs);
 };
 
