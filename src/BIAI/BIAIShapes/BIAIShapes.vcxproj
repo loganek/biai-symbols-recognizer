@@ -88,6 +88,7 @@
     <ClInclude Include="ImageAlgorithms\Circle.h" />
     <ClInclude Include="ImageAlgorithms\ContouredImage.h" />
     <ClInclude Include="ImageAlgorithms\ImageFeatures.h" />
+    <ClInclude Include="NeuronTranslator.h" />
     <ClInclude Include="Training\TrainingData.h" />
     <ClInclude Include="Training\TrainingDataLoader.h" />
   </ItemGroup>

@@ -24,9 +24,9 @@ NeuralNetwork::NeuralNetwork(int inpNeuron, int hidNeuron, int outNeuron)
 
 NeuralNetwork::~NeuralNetwork()
 {
-	delete [] inputLayer;
-	delete [] hiddenLayer;
 	delete [] outputLayer;
+	delete [] hiddenLayer;
+	delete [] inputLayer;
 }
 
 vector<double> NeuralNetwork::GetResults() const

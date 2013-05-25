@@ -9,6 +9,8 @@
 #include <tchar.h>
 #include <iostream>
 #include <ctime>
+#include "NeuronTranslator.h"
+
 using namespace std;
 
 const char* ShapeToStr(ShapeNo::Type shape)
@@ -51,25 +53,35 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	NeuralNetwork net(2, 4, 4);
 	srand( time(NULL) ); 
-	for ( int i = 0; i < 3000; i++ )
+	NeuronTranslator<4> translator;
+	int cnt = 0;
+	for ( int i = 0; i < 500; i++ )
 	{
 		int a = rand() % 2; 
 		int b = rand() % 2;
-		cout << b << " " << a;
+		int c = rand() % 4;
+		//cout << b << " " << a;
+		cout << c;
 		vector<double> xx;
 		xx.push_back(a);
 		xx.push_back(b);
         
- 		net.FeedForward(xx);
+ 		//net.FeedForward(xx);
+		net.FeedForward(NeuronTranslator<2>::GenerateNetworkData(c));
 		vector<double> res = net.GetResults();
-        
-        cout << " " << res[0] <<  " " << res[1]<<  " " << res[2]<<  " " << res[3] << endl;
+		translator.Init(res);
+		cout << " " << translator.GetSetIndex() << endl;
+		if ( translator.GetSetIndex() == c )
+			cnt++;
+
+        //cout << " " << res[0] <<  " " << res[1]<<  " " << res[2]<<  " " << res[3] << endl;
 		vector<double> expected;
-		expected.push_back( !a && !b);
+		/*expected.push_back( !a && !b);
 		expected.push_back(a && !b);
 		expected.push_back(!a && b);
-		expected.push_back(a && b);
-		net.BackPropagation(expected);
+		expected.push_back(a && b);*/
+		
+		net.BackPropagation(NeuronTranslator<4>::GenerateIndexedData(c));
 
 	}
 
