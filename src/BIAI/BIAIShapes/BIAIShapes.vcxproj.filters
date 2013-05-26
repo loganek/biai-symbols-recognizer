@@ -78,6 +78,12 @@
     <ClInclude Include="AI\NetworkIO.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
+    <ClInclude Include="Training\Training.h">
+      <Filter>Header Files\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="MainProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BIAIShapes.cpp">
@@ -112,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="AI\NetworkIO.cpp">
       <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Training\Training.cpp">
+      <Filter>Source Files\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="MainProgram.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

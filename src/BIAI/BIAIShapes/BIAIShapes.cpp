@@ -2,99 +2,34 @@
 //
 #define _USE_MATH_DEFINES
 
-#include "Training/TrainingDataLoader.h"
-#include "Training/TrainingData.h"
-#include "AI/NeuralNetwork.h"
-#include "ImageAlgorithms/ImageFeatures.h"
 #include <tchar.h>
-#include <iostream>
-#include <ctime>
-#include "NeuronTranslator.h"
-#include "AI/NetworkIO.h"
+#include "MainProgram.h"
 
 using namespace std;
 
-const char* ShapeToStr(ShapeNo::Type shape)
-{
-	switch (shape)
-	{
-	case ShapeNo::CIRCLE:
-		return "circle";
-	case ShapeNo::CROSS:
-		return "cross";
-	case ShapeNo::SQUARE:
-		return "square";
-	case ShapeNo::TRIANGLE:
-		return "triangle";
-	default:
-		return "unknow";
-	}
-}
-
-void DisplayTrainingData(const vector<TrainingData>& v)
-{
-	cout << "Circularity:\tConvexity:\tRectangularity:\tShape:" << endl;
-
-	for ( auto it = v.begin(); it != v.end(); it++ )
-	{
-		cout << it->GetCircularity() << "\t\t" << it->GetConvexity() << "\t\t" << it->GetRectangularity() << "\t\t" << ShapeToStr(it->GetShapeType()) << endl;
-	}
-}
-
-
 int _tmain(int argc, _TCHAR* argv[])
 {
-	const int shapes = 3;
+	MainProgram program;
 
-	vector<int> hiddenLayers;
-	hiddenLayers.push_back(4);
-	hiddenLayers.push_back(5);
+	char** arguments = new char*[argc];
 
-	TopologyInfo info;
-	info.inputCount = 3;
-	info.outputCount = shapes;
-	info.hiddenCount = hiddenLayers;
-
-	NeuralNetwork net(info);
-	NeuronTranslator<shapes> translator;
-
-	ContouredImage image("E:\\kolo.png");
-	ImageFeatures features(image);
-	cout << features.Circularity() << endl;
-	cout << features.Convexity() << endl;
-	cout << features.Rectangularity() << endl;
- 
-	TrainingDataLoader<TrainingData> loader("D:\\Moj_folder\\Dokumenty\\uczelnia\\BIAI\\biai-projekt\\test.txt");
-	loader.LoadData();
-	vector<TrainingData> v = loader.GetData();
-
-	DisplayTrainingData(v);
-	for ( int i = 0; i < 150; i++ )
-	for ( auto it = v.begin(); it != v.end(); it++ )
+	for ( int i = 0; i < argc; i++ )
 	{
-		std::vector<double> v;
-		v.push_back(it->GetCircularity()); v.push_back(it->GetConvexity()); v.push_back(it->GetRectangularity());
-		net.FeedForward(v);
-		translator.Init(net.GetResults());
-		vector<double> aa = translator.GetOriginalData();
-		cout << it->GetCircularity() << " " << it->GetConvexity() << " " << it->GetRectangularity() << " " << aa[0] << " " << aa[1] << " " << aa[2] << endl;
-
-		net.BackPropagation(NeuronTranslator<shapes>::GenerateIndexedData(it->GetShapeType()));
+		wstring wstr(argv[i]);
+		string str(wstr.begin(), wstr.end());
+		arguments[i] = new char[str.length() + 1];
+		strcpy(arguments[i], str.c_str());
 	}
-	std::vector<double> vv;
-	vv.push_back(features.Circularity()); vv.push_back(features.Convexity()); vv.push_back(features.Rectangularity());
-	net.FeedForward(vv);
-	vector<double> xx = net.GetResults();
 	
-	NetworkIO netIO("E:\\wagi.txt");
-	netIO.SaveNetwork(&net);
+	program.ParseArguments(argc, arguments);
 	
-	NeuralNetwork* netLoaded = netIO.LoadNetwork();
-	
-	netLoaded->FeedForward(vv);
-	translator.Init(netLoaded->GetResults());
-	vector<double> aa = translator.GetOriginalData();
-		
+	for ( int i = 0; i < argc; i++ )
+	{
+		delete [] arguments[i];
+	}
+
+	delete [] arguments;
+
 	return 0;
 }
 

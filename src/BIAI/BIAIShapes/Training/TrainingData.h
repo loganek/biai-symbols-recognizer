@@ -10,7 +10,6 @@ namespace ShapeNo
 		CIRCLE = 0,
 		SQUARE,
 		CROSS,
-		TRIANGLE,
 	};
 }
 

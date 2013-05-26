@@ -70,7 +70,7 @@ NeuralNetwork* NetworkIO::LoadNetwork()
 
 	inputFile.close();
 
-	return network;
+	return newNetwork;
 }
 
 TopologyInfo NetworkIO::LoadTopologyInfo()

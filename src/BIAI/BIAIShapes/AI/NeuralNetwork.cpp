@@ -38,6 +38,8 @@ NeuralNetwork::~NeuralNetwork()
 {
 	delete outputLayer;
 	
+	for ( auto it = hiddenLayers.begin(); it != hiddenLayers.end(); it++ )
+		delete *it;
 
 	delete inputLayer;
 }

@@ -66,12 +66,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_core245.lib;opencv_imgproc245.lib;opencv_highgui245.lib;opencv_ml245.lib;opencv_video245.lib;opencv_features2d245.lib;opencv_calib3d245.lib;opencv_objdetect245.lib;opencv_contrib245.lib;opencv_legacy245.lib;opencv_flann245.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -89,7 +92,9 @@
     <ClInclude Include="ImageAlgorithms\Circle.h" />
     <ClInclude Include="ImageAlgorithms\ContouredImage.h" />
     <ClInclude Include="ImageAlgorithms\ImageFeatures.h" />
+    <ClInclude Include="MainProgram.h" />
     <ClInclude Include="NeuronTranslator.h" />
+    <ClInclude Include="Training\Training.h" />
     <ClInclude Include="Training\TrainingData.h" />
     <ClInclude Include="Training\TrainingDataLoader.h" />
   </ItemGroup>
@@ -104,6 +109,8 @@
     <ClCompile Include="BIAIShapes.cpp" />
     <ClCompile Include="ImageAlgorithms\ContouredImage.cpp" />
     <ClCompile Include="ImageAlgorithms\ImageFeatures.cpp" />
+    <ClCompile Include="MainProgram.cpp" />
+    <ClCompile Include="Training\Training.cpp" />
     <ClCompile Include="Training\TrainingData.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

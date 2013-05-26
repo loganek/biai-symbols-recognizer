@@ -4,12 +4,12 @@
 #include <vector>
 #include <functional>
 
-struct Connection
+struct Line
 {
     double weight;
-    double deltaWeight;
+    double delta;
 
-	Connection(double weight = 0.0, double deltaWeight = 0.0) : weight(weight), deltaWeight(deltaWeight) {}
+	Line(double weight = 0.0, double delta = 0.0) : weight(weight), delta(delta) {}
 };
 
 class Neuron
@@ -18,7 +18,7 @@ private:
 	double gradient;
 	double output;
 	unsigned index;
-	std::vector<Connection> weights;
+	std::vector<Line> weights;
 
     std::function<double()> weightsInitializer;
 
