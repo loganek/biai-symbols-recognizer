@@ -1,4 +1,4 @@
-<AdaptiveVisionProject Name="cechy" Version="3.0.1006" StartUpProgramName="AutomaticCrossGenerator">
+<AdaptiveVisionProject Name="cechy" Version="3.0.1006" StartUpProgramName="AutomaticCircleGenerator">
   <Files>
     <Program Path="cechy.avcode" />
     <View Path="cechy.avview" />

@@ -96,14 +96,14 @@ public AutomaticSquareGenerator()
 	EnumerateIntegers
 	(
 		inStart: 300
-		inCount: 100
+		inCount: 50
 		inStep: 1
 		outValue: con_79d93ece_759e_44c5_8aef_b45fd76e3964
 	)
 
 	SubtractIntegers
 	(
-		inA: 700
+		inA: 650
 		inB: con_79d93ece_759e_44c5_8aef_b45fd76e3964
 		outDifference: con_4fe59a92_f214_4caa_818c_f143b8888749
 	)
@@ -169,14 +169,14 @@ public AutomaticCircleGenerator()
 	EnumerateIntegers
 	(
 		inStart: 300
-		inCount: 100
+		inCount: 50
 		inStep: 1
 		outValue: con_6eea7179_f265_434f_8558_afcfe78fa425
 	)
 
 	SubtractIntegers
 	(
-		inA: 700
+		inA: 650
 		inB: con_6eea7179_f265_434f_8558_afcfe78fa425
 		outDifference: con_58bf13ca_074f_460d_a70b_1633fe873efc
 	)
@@ -219,7 +219,7 @@ public AutomaticCrossGenerator()
 {
 	EnumerateIntegers
 	(
-		inStart: 50
+		inStart: 30
 		inCount: 50
 		inStep: 1
 		outValue: con_d8a051af_6320_4014_93a9_6181093d61cc
@@ -227,7 +227,7 @@ public AutomaticCrossGenerator()
 
 	SubtractIntegers
 	(
-		inA: 150
+		inA: 130
 		inB: con_d8a051af_6320_4014_93a9_6181093d61cc
 		outDifference: con_09ee8519_0791_464d_a80b_b185c3ec533d
 	)
