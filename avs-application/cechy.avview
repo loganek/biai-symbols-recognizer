@@ -1,19 +1,17 @@
 <documents>
   <hsplit>
-    <views width="0.9983" height="0.1608">
+    <views width="0.9983" height="0.1632">
       <view>
         <output name="con_38678480_7555_4240_a1f2_4a375f9c5e84" />
         <output name="con_ef0d66d2_08eb_4a29_b070_29de4b75c8f3" />
-        <output name="con_b7236e08_3aeb_4d76_96b5_25fe6707d962" />
         <output name="con_9f9fc551_8557_41eb_84c1_d2eeeee64ffc" />
       </view>
     </views>
     <hsplit>
-      <views width="0.9983" height="0.1983">
+      <views width="0.9983" height="0.1995">
         <view>
           <output name="con_6338fa9c_d852_4f09_8d03_04e5de2b733f" />
           <output name="con_40fa337e_e6ee_428a_a9dd_4b225dd867aa" />
-          <output name="con_e635af1e_0768_460e_93ab_3a024d4a3340" />
           <output name="con_16a8305a_aaac_4932_9819_6c2448e2b9a3" />
         </view>
       </views>
@@ -22,24 +20,19 @@
           <view>
             <output name="con_1155bf9d_38a8_4ff5_9d47_e3524a56a481" />
             <output name="con_f0961693_c343_4f39_ad51_9094bf5ada8f" />
-            <output name="con_672e1553_f377_4377_9178_67a94d7f72bd" />
             <output name="con_8a698616_4ced_4ebc_b535_e848af66f87d" />
           </view>
         </views>
         <hsplit>
-          <views width="0.9983" height="0.1826">
+          <views width="0.9983" height="0.1814">
             <view>
-              <output name="con_9ba670bf_1cd4_4c00_b54e_8a906a48f570" />
-              <output name="con_9b6400cf_76a7_418b_8ff3_5110e85824ce" />
-              <output name="con_33cc20e3_78ae_462f_afe8_f0c1db28e163" />
-              <output name="con_13092c31_cfb4_4a3e_a458_319c917125f1" />
+              <output name="con_9318998a_f9fc_4dca_9682_26631eff871b" macro="AutomaticCrossGenerator" />
             </view>
           </views>
-          <views width="0.9983" height="0.2515">
+          <views width="0.9983" height="0.2491">
             <view>
               <output name="con_7f5bb3c3_cc20_4def_bc0e_8c76c07be055" />
               <output name="con_c88c226f_425e_4367_97c4_f81a802ba8ac" />
-              <output name="con_f39655a3_6598_4741_8a27_60bd4ad4c2ca" />
               <output name="con_5e590414_9e79_40d8_a96d_0d83fad4cb37" />
             </view>
           </views>

@@ -6,7 +6,6 @@ public Main()
 		inRegion: Region<cechy.0de0a00f.Region.avdata>
 		outCircularity: con_38678480_7555_4240_a1f2_4a375f9c5e84
 		outConvexity: con_ef0d66d2_08eb_4a29_b070_29de4b75c8f3
-		outElongation: con_b7236e08_3aeb_4d76_96b5_25fe6707d962
 		outRectangularity: con_9f9fc551_8557_41eb_84c1_d2eeeee64ffc
 	)
 
@@ -16,7 +15,6 @@ public Main()
 		inRegion: Region<cechy.ceccd28e.Region.avdata>
 		outCircularity: con_6338fa9c_d852_4f09_8d03_04e5de2b733f
 		outConvexity: con_40fa337e_e6ee_428a_a9dd_4b225dd867aa
-		outElongation: con_e635af1e_0768_460e_93ab_3a024d4a3340
 		outRectangularity: con_16a8305a_aaac_4932_9819_6c2448e2b9a3
 	)
 
@@ -26,18 +24,7 @@ public Main()
 		inRegion: Region<cechy.df320bbc.Region.avdata>
 		outCircularity: con_1155bf9d_38a8_4ff5_9d47_e3524a56a481
 		outConvexity: con_f0961693_c343_4f39_ad51_9094bf5ada8f
-		outElongation: con_672e1553_f377_4377_9178_67a94d7f72bd
 		outRectangularity: con_8a698616_4ced_4ebc_b535_e848af66f87d
-	)
-
-	//Krzyż
-	Cechy
-	(
-		inRegion: Region<cechy.0c338114.Region.avdata>
-		outCircularity: con_9ba670bf_1cd4_4c00_b54e_8a906a48f570
-		outConvexity: con_9b6400cf_76a7_418b_8ff3_5110e85824ce
-		outElongation: con_33cc20e3_78ae_462f_afe8_f0c1db28e163
-		outRectangularity: con_13092c31_cfb4_4a3e_a458_319c917125f1
 	)
 
 	//Nieznane??
@@ -46,12 +33,11 @@ public Main()
 		inRegion: Region<cechy.5a1f4d19.Region.avdata>
 		outCircularity: con_7f5bb3c3_cc20_4def_bc0e_8c76c07be055
 		outConvexity: con_c88c226f_425e_4367_97c4_f81a802ba8ac
-		outElongation: con_f39655a3_6598_4741_8a27_60bd4ad4c2ca
 		outRectangularity: con_5e590414_9e79_40d8_a96d_0d83fad4cb37
 	)
 }
 
-public Cechy(Region inRegion, Real outCircularity, Real outConvexity, Real outElongation, Real outRectangularity) step
+public Cechy(Region inRegion, Real outCircularity, Real outConvexity, Real outRectangularity) step
 {
 	RegionCircularity
 	(
@@ -67,12 +53,6 @@ public Cechy(Region inRegion, Real outCircularity, Real outConvexity, Real outEl
 		outConvexity: con_ce3a72e0_90cb_4565_8f4e_15157ff3e733
 	)
 
-	RegionElongation
-	(
-		inRegion: inRegion
-		outElongation: con_4fa6c59c_a7da_4c5d_926d_f7393c0985a7
-	)
-
 	RegionRectangularity
 	(
 		inRegion: inRegion
@@ -83,54 +63,213 @@ public Cechy(Region inRegion, Real outCircularity, Real outConvexity, Real outEl
 
 	outConvexity = con_ce3a72e0_90cb_4565_8f4e_15157ff3e733
 
-	outElongation = con_4fa6c59c_a7da_4c5d_926d_f7393c0985a7
-
 	outRectangularity = con_1a458ac6_2805_43aa_aa45_d103609fab5b
 }
 
-public TestDataGenerator()
+public ManualGenerator()
 {
 	Cechy
 	(
-		inRegion: Region<cechy.64cc9ca6.Region.avdata>
+		inRegion:
+			Region
+			(
+				Width: 512
+				Height: 512
+				Data: <>
+			)
 		outCircularity: con_86b5e2e9_293e_4d23_b4ba_5aa309f83463
 		outConvexity: con_8eba5f5a_0691_4d7f_97f3_c8ca22721b98
-		outElongation: Nil
 		outRectangularity: con_f42a0ebd_c928_4691_a6be_873dcc2c252e
 	)
 
-	AddIntegers
+	SaveData
 	(
-		inA: 3
-		inB: 0
-		outSum: con_e28ccc64_a6f9_44dd_b6b8_1d9cc1159ab2
+		inCircularity: con_86b5e2e9_293e_4d23_b4ba_5aa309f83463
+		inConvexity: con_8eba5f5a_0691_4d7f_97f3_c8ca22721b98
+		inRectangularity: con_f42a0ebd_c928_4691_a6be_873dcc2c252e
+		inNumber: 0
+	)
+}
+
+public AutomaticSquareGenerator()
+{
+	EnumerateIntegers
+	(
+		inStart: 300
+		inCount: 100
+		inStep: 1
+		outValue: con_79d93ece_759e_44c5_8aef_b45fd76e3964
 	)
 
+	SubtractIntegers
+	(
+		inA: 700
+		inB: con_79d93ece_759e_44c5_8aef_b45fd76e3964
+		outDifference: con_4fe59a92_f214_4caa_818c_f143b8888749
+	)
+
+	MakeBox
+	(
+		inX: 0
+		inY: 0
+		inWidth: con_79d93ece_759e_44c5_8aef_b45fd76e3964
+		inHeight: con_4fe59a92_f214_4caa_818c_f143b8888749
+		outBox: con_ffc00034_e023_4a69_971e_55ec8a549670
+	)
+
+	Cechy
+	(
+		inRegion: con_ffc00034_e023_4a69_971e_55ec8a549670
+		outCircularity: con_a066a7a5_e0ca_4d86_81da_41a98a02c08d
+		outConvexity: con_404b4aef_7ae4_42c9_bbef_caa98eedc31f
+		outRectangularity: con_a1809bc9_5709_4535_bb00_c01abd9a9ff2
+	)
+
+	SaveData
+	(
+		inCircularity: con_a066a7a5_e0ca_4d86_81da_41a98a02c08d
+		inConvexity: con_404b4aef_7ae4_42c9_bbef_caa98eedc31f
+		inRectangularity: con_a1809bc9_5709_4535_bb00_c01abd9a9ff2
+		inNumber: 1
+	)
+}
+
+public SaveData(Real inCircularity, Real inConvexity, Real inRectangularity, Integer inNumber) step
+{
 	CreateShortArray<String>
 	(
-		inValue1: con_86b5e2e9_293e_4d23_b4ba_5aa309f83463
-		inValue2: con_f42a0ebd_c928_4691_a6be_873dcc2c252e
-		inValue3: con_8eba5f5a_0691_4d7f_97f3_c8ca22721b98
-		inValue4: con_e28ccc64_a6f9_44dd_b6b8_1d9cc1159ab2
+		inValue1: inCircularity
+		inValue2: inConvexity
+		inValue3: inRectangularity
+		inValue4: inNumber
 		inValue5: Nil
 		inValue6: Nil
 		inValue7: Nil
 		inValue8: Nil
-		outArray: con_46003e2f_12cb_46e9_af79_0fa26fcd7e9c
+		outArray: con_01474f3c_6be6_4173_929f_5b012a20c41d
 	)
 
 	FormatString
 	(
 		inFormat: "%0% %1% %2% %3%\\r\\n"
-		inData: con_46003e2f_12cb_46e9_af79_0fa26fcd7e9c
-		outFormattedString: con_0e12d2fa_ab2a_4b06_8481_36e50dabd708
+		inData: con_01474f3c_6be6_4173_929f_5b012a20c41d
+		outFormattedString: con_a9396f29_856c_4538_9a4f_2b6fdc2677eb
 	)
 
 	SaveString
 	(
-		inString: con_0e12d2fa_ab2a_4b06_8481_36e50dabd708
+		inString: con_a9396f29_856c_4538_9a4f_2b6fdc2677eb
 		inFileAccessMode: CreateOrAppend
-		inFile: "E:\\test.txt"
+		inFile: "D:\\Moj_folder\\Dokumenty\\uczelnia\\BIAI\\biai-projekt\\test.txt"
+	)
+}
+
+public AutomaticCircleGenerator()
+{
+	EnumerateIntegers
+	(
+		inStart: 300
+		inCount: 100
+		inStep: 1
+		outValue: con_6eea7179_f265_434f_8558_afcfe78fa425
+	)
+
+	SubtractIntegers
+	(
+		inA: 700
+		inB: con_6eea7179_f265_434f_8558_afcfe78fa425
+		outDifference: con_58bf13ca_074f_460d_a70b_1633fe873efc
+	)
+
+	MakeBox
+	(
+		inX: 0
+		inY: 0
+		inWidth: con_58bf13ca_074f_460d_a70b_1633fe873efc
+		inHeight: con_6eea7179_f265_434f_8558_afcfe78fa425
+		outBox: con_0e3d5f6a_7d07_46a3_9cc9_5709eef09f26
+	)
+
+	CreateEllipticRegion
+	(
+		inEllipseBoundingBox: con_0e3d5f6a_7d07_46a3_9cc9_5709eef09f26
+		inRegionWidth: Nil
+		inRegionHeight: Nil
+		outRegion: con_b995b3ae_76a1_4177_9034_0c80e5eb1843
+	)
+
+	Cechy
+	(
+		inRegion: con_b995b3ae_76a1_4177_9034_0c80e5eb1843
+		outCircularity: con_7b0f6b08_5eed_45e9_9816_c6f8dfe1a3c2
+		outConvexity: con_86bb4c43_7950_45d6_8473_3ca361aec7a7
+		outRectangularity: con_46b4e9fe_6af0_4c52_a6c2_9e94a91cc5c8
+	)
+
+	SaveData
+	(
+		inCircularity: con_7b0f6b08_5eed_45e9_9816_c6f8dfe1a3c2
+		inConvexity: con_86bb4c43_7950_45d6_8473_3ca361aec7a7
+		inRectangularity: con_46b4e9fe_6af0_4c52_a6c2_9e94a91cc5c8
+		inNumber: 0
+	)
+}
+
+public AutomaticCrossGenerator()
+{
+	EnumerateIntegers
+	(
+		inStart: 50
+		inCount: 50
+		inStep: 1
+		outValue: con_d8a051af_6320_4014_93a9_6181093d61cc
+	)
+
+	SubtractIntegers
+	(
+		inA: 150
+		inB: con_d8a051af_6320_4014_93a9_6181093d61cc
+		outDifference: con_09ee8519_0791_464d_a80b_b185c3ec533d
+	)
+
+	CreateCrossRegion
+	(
+		inCrossBoundingBox:
+			Box
+			(
+				X: 0
+				Y: 0
+				Width: 400
+				Height: 400
+			)
+		inRegionWidth: Nil
+		inRegionHeight: Nil
+		outRegion: con_b01243ba_82b4_4513_a9f3_3ff51e6f11e4
+	)
+
+	DilateRegion
+	(
+		inRegion: con_b01243ba_82b4_4513_a9f3_3ff51e6f11e4
+		inKernel: Box
+		inRadiusX: con_d8a051af_6320_4014_93a9_6181093d61cc
+		inRadiusY: con_09ee8519_0791_464d_a80b_b185c3ec533d
+		outRegion: con_9318998a_f9fc_4dca_9682_26631eff871b
+	)
+
+	Cechy
+	(
+		inRegion: con_9318998a_f9fc_4dca_9682_26631eff871b
+		outCircularity: con_d4fd079f_e2a1_4d48_b81b_dd1fd3471996
+		outConvexity: con_f92a9170_3d28_48f1_8718_fa758b2ffa49
+		outRectangularity: con_23fbc98a_7d74_449c_a982_07275948ae23
+	)
+
+	SaveData
+	(
+		inCircularity: con_d4fd079f_e2a1_4d48_b81b_dd1fd3471996
+		inConvexity: con_f92a9170_3d28_48f1_8718_fa758b2ffa49
+		inRectangularity: con_23fbc98a_7d74_449c_a982_07275948ae23
+		inNumber: 2
 	)
 }
 
