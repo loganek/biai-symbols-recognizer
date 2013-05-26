@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="AI\FurtherLayer.h" />
     <ClInclude Include="AI\HiddenLayer.h" />
+    <ClInclude Include="AI\NetworkIO.h" />
     <ClInclude Include="AI\NeuralNetwork.h" />
     <ClInclude Include="AI\Neuron.h" />
     <ClInclude Include="AI\OutputLayer.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="AI\FurtherLayer.cpp" />
     <ClCompile Include="AI\HiddenLayer.cpp" />
     <ClCompile Include="AI\Layer.cpp" />
+    <ClCompile Include="AI\NetworkIO.cpp" />
     <ClCompile Include="AI\NeuralNetwork.cpp" />
     <ClCompile Include="AI\Neuron.cpp" />
     <ClCompile Include="AI\OutputLayer.cpp" />

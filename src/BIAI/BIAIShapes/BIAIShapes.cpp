@@ -10,6 +10,7 @@
 #include <iostream>
 #include <ctime>
 #include "NeuronTranslator.h"
+#include "AI/NetworkIO.h"
 
 using namespace std;
 
@@ -57,7 +58,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	NeuralNetwork net(info);
 	NeuronTranslator<shapes> translator;
 
-	ContouredImage image("E:\\krzyz.png");
+	ContouredImage image("E:\\kolo.png");
 	ImageFeatures features(image);
 	cout << features.Circularity() << endl;
 	cout << features.Convexity() << endl;
@@ -81,15 +82,18 @@ int _tmain(int argc, _TCHAR* argv[])
 		net.BackPropagation(NeuronTranslator<shapes>::GenerateIndexedData(it->GetShapeType()));
 	}
 	std::vector<double> vv;
-		vv.push_back(features.Circularity()); vv.push_back(features.Convexity()); vv.push_back(features.Rectangularity());
-		net.FeedForward(vv);
-		vector<double> xx = net.GetResults();
-	net.SaveNetwork("E:\\topology.txt");
-	NeuralNetwork* netLoaded = NeuralNetwork::LoadNetwork("E:\\topology.txt");
+	vv.push_back(features.Circularity()); vv.push_back(features.Convexity()); vv.push_back(features.Rectangularity());
+	net.FeedForward(vv);
+	vector<double> xx = net.GetResults();
 	
-		netLoaded->FeedForward(vv);
-		translator.Init(netLoaded->GetResults());
-		vector<double> aa = translator.GetOriginalData();
+	NetworkIO netIO("E:\\wagi.txt");
+	netIO.SaveNetwork(&net);
+	
+	NeuralNetwork* netLoaded = netIO.LoadNetwork();
+	
+	netLoaded->FeedForward(vv);
+	translator.Init(netLoaded->GetResults());
+	vector<double> aa = translator.GetOriginalData();
 		
 	return 0;
 }

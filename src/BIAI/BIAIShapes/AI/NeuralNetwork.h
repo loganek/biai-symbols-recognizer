@@ -1,5 +1,5 @@
 #ifndef NEURAL_NETWORK_H
-#define NERUAL_NETWORK_H
+#define NEURAL_NETWORK_H
 
 #include "HiddenLayer.h"
 #include "OutputLayer.h"
@@ -21,11 +21,7 @@ private:
 	std::vector<HiddenLayer*> hiddenLayers;
 	OutputLayer* outputLayer;
 
-	void SaveTopologyInfo(std::ofstream& file) const;
-	void SaveSingleLayer(Layer* lay, std::ofstream& file) const;
-	
-	static TopologyInfo LoadTopologyInfo(std::ifstream& file);
-	static void LoadSingleLayer(Layer* lay, std::ifstream& file);
+	friend class NetworkIO;
 public:
     NeuralNetwork(TopologyInfo info);
 	virtual ~NeuralNetwork();
@@ -33,9 +29,8 @@ public:
     void FeedForward(const std::vector<double> &inputVals);
     void BackPropagation(const std::vector<double> &targetVals);
     std::vector<double> GetResults() const;
-
-	void SaveNetwork(const std::string& fileName) const;
-	static NeuralNetwork* LoadNetwork(const std::string& fileName);
 };
+
+
 
 #endif
