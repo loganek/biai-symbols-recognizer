@@ -1,0 +1,19 @@
+Temat projektu:
+Zaprojektowaæ i zaimplementowaæ program ucz¹cy prost¹ sieæ neuronow¹ metod¹ wstecznej propagacji b³êdu, który zostanie przetestowany na przyk³adzie systemu do rozpoznawania pewnych kategorii na podstawie opisu symbolicznego jego cech. W zip-ie zamieœci³em równie¿ moj¹ prezentacjê, któr¹ przedstawia³em przed Panem i przed reszt¹ grupy(katalog doc).
+
+Za cel postawi³em sobie przygotowanie algorytmów które wyznaczaj¹ cech kszta³tów obrazów binarnych, a nastêpnie cechy te bêd¹ wartoœciami wejœciowymi dla sieci.
+
+Sieæ neuronowa, jakiej u¿y³em, ma 4 warstwy, o kolejnej liczbie neuronów: 3, 4, 5, 3.
+Liczba neuronów warstwy wejœciowej wynika z liczby badanych cech kszta³tu - okr¹g³oœci, wypuk³oœci oraz kwadratowoœci. Natomiast liczba neuronów w ostatniej warstwie wynika z tego, ¿e rozpoznajê 3 kszta³ty - ko³o, kwadrat oraz krzy¿. Liczba neuronów warstwy zosta³a ustalona podczas prób.
+Na pocz¹tku sieæ mia³a mieæ tylko jedn¹ warstwê ukryt¹, i tak zosta³a te¿ zaprojektowana. Jednak okaza³o siê, ¿e trzeba dodaæ jeszcze kolejn¹ warstwê, aby sieæ dzia³a³a dobrze. Przy dodawaniu drugiej warstwy ukrytej, zorientowa³em siê, ¿e nie zajê³o mi to wiele kodu, dla tego uogólni³em implementacjê mojej sieci na stosowanie dowolnej liczby warstw ukrytych. Historiê rozwoju projektu mogê równie¿ udostêpniæ, poprzez dodanie Pana do repozytorium GIT.
+
+Projekt zosta³ napisany w jêzyku C++, w œrodowisku Visual Studio 2010. Program kompilowany by³ tylko na windowsie, ale wydaje mi siê, ¿e powinien równie¿ daæ siê skompilowaæ pod systemem operacyjnym linux.
+Algorytmy do przetwarzania obrazów, z jakich korzysta³em, pochodz¹ z biblioteki OpenCV, wersja 2.4.5.
+
+Dane ucz¹ce zosta³y wygenerowane przy u¿yciu programu napisanego w Adaptive Vision Studio - Ÿród³a tego programu oraz dane ucz¹ce równie¿ zamieszczam w paczce(katalog avs-application). Gdyby chcia³ Pan otworzyæ program, nale¿y pobraæ wersjê Student ze strony http://adaptive-vision.com W wersji Lite program prawdopodobnie siê nie otworzy, poniewa¿ zawiera makrofiltry.
+
+W archiwum znajduj¹ siê plik nauczonej sieci neuronowej, którego mo¿na od razu u¿ywaæ, oraz kilka przyk³adowych obrazów (w katalogu sample_images).
+
+Z ciekawostek dodam równie¿, ¿e moja sieæ zostanie wykorzystana w tegorocznej edycji zawodów IMAV (http://imav2013.org), miêdzy innymi do rozpoznawania kszta³tów.
+
+Niestety, nigdzie nie znalaz³em informacji na temat tego, czy jakiœ raport musi byæ napisany, a jeœli tak, to jak ma wygl¹daæ. Dla tego, póki co, przesy³am takie krótkie mailowe sprawozdanie, a gdyby trzeba by³o przygotowaæ raport, to równie¿ wykonam go w najbli¿szym czasie.
